@@ -20,6 +20,18 @@
   justify-content: center;
   color:blanchedalmond;
 }
+.c4-boardheader {
+  justify-content: center;
+  display: flex;
+  text-align: center;
+  padding-bottom: 35px;
+}
+.p1turn{
+  color: darkturquoise;
+}
+.p2turn{
+  color: darkmagenta;
+}
 .c4-board {
   width: 50vw;
   height: 40vw;
@@ -38,18 +50,30 @@
   background-color: #282c34;
   justify-content: space-evenly;
 }
+.c4-col.c4-disabled{
+  cursor: initial;
+  background-color: #282c34 !important;
+}
 .c4-col:hover {
   cursor: pointer;
-  background-color: rgba(100, 100, 100, 0.5);
+  background-color: rgba(255, 255, 255, 0.2);
 }
 .c4-cell {
   height: 16.6%;
   width: auto;
   padding-top: 100%;
   border-radius: 50%;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+  animation-name: fadein;
 }
+
 .none{
   background-color: blanchedalmond;
+}
+.none.c4-disabled{
+  cursor: initial;
+  background-color: #282c34 !important;
 }
 .none:hover {
   background-color: darkgoldenrod;
@@ -60,4 +84,15 @@
 .p2{
   background-color: darkmagenta;
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100;
+  }
+}
+
 

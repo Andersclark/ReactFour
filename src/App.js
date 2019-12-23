@@ -15,3 +15,13 @@ class App extends Component {
   }
 }
 export default App;
+
+
+/*
+TODO: Formulär för spelarnamn
+TODO: Turncounter
+TODO: Highscore-list(class)
+TODO: Navbar
+TODO: Rules-page
+TODO: Player-class
+*/

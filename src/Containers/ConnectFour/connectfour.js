@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-import Column from './column.js'
+import Column from '../../components/column.js';
+import Highscorelist from '../../components/highscorelist';
+import './connectfour.css'
 
-class Board extends Component {
+
+
+class Connectfour extends Component {
 
   state = {
     currentPlayer: 'p1',
+    otherPlayer: 'p2',
     currentTurn: 1,
     winner: 'none',
     log: [],
+    highschores: new Highscorelist(),
     columns: [
       [{ owner: 'none' }, { owner: 'none' }, { owner: 'none' }, { owner: 'none' }, { owner: 'none' }, { owner: 'none' }],
       [{ owner: 'none' }, { owner: 'none' }, { owner: 'none' }, { owner: 'none' }, { owner: 'none' }, { owner: 'none' }],
@@ -19,10 +25,31 @@ class Board extends Component {
     ],
   };
 
+  render() {
+    return (
+      <div>
+        {this.state.winner === 'none' ? <h1 className={"c4-boardheader " + (this.state.currentPlayer + "turn")}>{`Player ${this.state.currentPlayer.charAt(1)}'s turn(${this.state.currentTurn})`}</h1> : <h1 className={"c4-boardheader " + (this.state.winner + "turn")}>Player {this.state.winner.charAt(1)} won in {this.state.currentTurn} turns</h1>}
+        <div className="c4-board">
+          {this.state.columns.map((column, index) => {
+            return <Column
+              cells={column}
+              winner={this.state.winner}
+              key={index}
+              click={() => this.colClickHandler(index)}></Column>
+          })
+          }
+
+        </div>
+
+      </div >
+    )
+  }
   nextTurn = () => {
-    let nextPlayer = (this.state.currentPlayer === 'p1') ? 'p2' : 'p1';
-    let nextTurn = (this.state.currentTurn + 1)
-    this.setState({ currentPlayer: nextPlayer, currentTurn: nextTurn });
+    if (this.state.winner === 'none') {
+      let nextPlayer = this.state.currentPlayer === 'p1' ? 'p2' : 'p1';
+      let nextTurn = (this.state.currentTurn + 1)
+      this.setState({ currentPlayer: nextPlayer, otherPlayer: this.state.currentPlayer, currentTurn: nextTurn });
+    }
   }
   colClickHandler = (index) => {
 
@@ -155,30 +182,21 @@ class Board extends Component {
   }
 
   endgame() {
-    this.setState({ winner: this.state.currentPlayer })
-  }
-
-
-
-  render() {
-    return (
-      <div>
-        {this.state.winner === 'none' ? <h1 className={"c4-boardheader " + (this.state.currentPlayer + "turn")}>{`Player ${this.state.currentPlayer.charAt(1)}'s turn(${this.state.currentTurn})`}</h1> : <h1 className={"c4-boardheader " + (this.state.winner + "turn")}>Player {this.state.winner.charAt(1)} won in {this.state.currentTurn} turns</h1>}
-        <div className="c4-board">
-          {this.state.columns.map((column, index) => {
-            return <Column
-              cells={column}
-              winner={this.state.winner}
-              key={index}
-              click={() => this.colClickHandler(index)}></Column>
-          })
-          }
-
-        </div>
-
-      </div>
+    this.setState({
+      winner: this.state.currentPlayer,
+      looser: this.state.otherPlayer
+    })
+    this.state.highschores.add(
+      this.state.currentPlayer, this.state.otherplayer, this.state.currentTurn
     )
+    console.log("HIGHSCORES:")
+    this.state.highschores.getHighscores().forEach((element, index) => {
+      console.log(`${index + 1}. ${element.toString()}`)
+    });
   }
+
+
+
 }
 
-export default Board;
+export default Connectfour;

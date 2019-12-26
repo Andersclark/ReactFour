@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+.c4-boardheader {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  padding-bottom: 35px;
+}
+.c4-boardheadercell {
+  border-radius: 50%;
+  width: 5vw;
+}
+.p1turn{
+  color: darkturquoise;
+}
+.p2turn{
+  color: darkmagenta;
+}
+.c4-board {
+  width: 50vw;
+  height: 40vw;
+  display: flex;
+  flex-direction: row;
+  flex-flow: nowrap;
+  justify-content: space-evenly;
+  background-color: #282c34;
+  border-radius: 10%;
+}
+.c4-col {
+  width: 14.3%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  background-color: #282c34;
+  justify-content: space-evenly;
+}
+.c4-col.c4-disabled{
+  cursor: initial;
+  background-color: #282c34 !important;
+}
+.c4-col:hover {
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.c4-cell {
+  height: 16.6%;
+  width: auto;
+  padding-top: 100%;
+  border-radius: 50%;
+  animation-duration: 2s;
+  animation-timing-function: ease-in;
+  animation-name: fadein;
+}
+
+.none{
+  background-color: blanchedalmond;
+}
+.none.c4-disabled{
+  cursor: initial;
+  background-color: #282c34 !important;
+}
+.none:hover {
+  background-color: darkgoldenrod;
+}
+.p1{
+  background-color: darkturquoise;
+}
+.p2{
+  background-color: darkmagenta;
+}
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 100;
+  }
+}

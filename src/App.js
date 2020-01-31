@@ -40,10 +40,3 @@ class App extends Component {
   }
 }
 export default App;
-
-
-/*
-TODO: Formulär för spelarnamn
-TODO: Rules-page
-TODO: Player-class
-*/

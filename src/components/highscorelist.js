@@ -14,13 +14,13 @@ class Highscorelist {
   getLeader() {
     this.highscores.sort((highscoreA, highscoreB) => {
       return !(highscoreA.turn - highscoreB.turn);
-    })
+    });
     return this.highscores[0];
   }
   getHighscores() {
-    this.highscores.sort((highscoreA, highscoreB) => {
+    this.highscores.sort((highcoreA, highscoreB) => {
       return highscoreA.turn - highscoreB.turn
-    })
+    });
     return this.highscores.slice(0, 3);
   }
   getRecent() {

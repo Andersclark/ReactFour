@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/vcs.xml
+/ReactFour.iml
+modules.xml
+misc.xml
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/

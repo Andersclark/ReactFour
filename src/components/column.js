@@ -10,5 +10,5 @@ const column = (props) => {
       })}
     </div >
   )
-}
+};
 export default column;

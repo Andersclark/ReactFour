@@ -7,8 +7,14 @@ import Home from './Containers/Home/home';
 import Highscores from './Containers/HighScores/highscores';
 import Rules from './Containers/Rules/rules';
 import './App.css';
+import HighscoreList from "./components/highscorelist";
 
 class App extends Component {
+
+
+  state = {
+    highscores: new HighscoreList(),
+  };
 
   render() {
     return (
@@ -20,7 +26,7 @@ class App extends Component {
                 <Link className="navigationitem" to="/">
                   Home
                 </Link>
-                <Link className="navigationitem" to="/connectfour">Connect four</Link>
+                <Link className="navigationitem" to="/connectfour">Play</Link>
                 <Link className="navigationitem" to="/rules">Rules</Link>
                 <Link className="navigationitem" to="/highscores">Highscores</Link>
               </ul>
@@ -29,10 +35,9 @@ class App extends Component {
 
           <div className="App-body">
             <Route path="/" exact component={Home} />
-            <Route path="/connectfour" component={Connectfour} />
-            <Route path="/highscores" component={Highscores} />
+            <Route path="/connectfour" render={ () => <Connectfour highscores={this.state.highscores}/>}/>
+            <Route path="/highscores" render={ () => <Highscores highscoreList={this.state.highscores.getHighscores()}  />}/>
             <Route path="/rules" component={Rules} />
-
           </div>
         </div>
       </BrowserRouter>

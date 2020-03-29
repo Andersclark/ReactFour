@@ -3,7 +3,7 @@
 
 ## About
 
-This is a simple Connect Four-game written in React. I've been tinkering on this as my sandbox while learning React so apologies for redundancy, over-complicated expressions and the mix of old and new syntax etc. 
+This is a simple Connect Four-game written in React. I've been tinkering on this as my sandbox while learning React so apologies for redundancy, over-complicated expressions and the mix of old and new syntax etc. This is in no way my attempt at writing top-level React-code. It's me playing, learning, trying things out etc.
 
 
 ## How to
